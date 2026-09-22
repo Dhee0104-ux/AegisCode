@@ -23,6 +23,8 @@ npm run dev
 ```
 Open http://localhost:5173.
 
+<img width="1536" height="1024" alt="32fe65e0-5302-4857-b88a-7200ccec267e" src="https://github.com/user-attachments/assets/b3ee42ad-1756-4ffa-84cc-35493bb32900" />
+
 ### Optional LLM
 Copy `.env.example` to `.env` and set `LLM_API_KEY`, `LLM_BASE_URL`, and `LLM_MODEL`. Without an LLM, AegisCode uses deterministic local agents so the platform remains runnable.
 
