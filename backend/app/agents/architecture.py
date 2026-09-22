@@ -1,0 +1,7 @@
+from .base import Agent
+class ArchitectureAgent(Agent):
+    name='architect'
+    async def run(self,ctx):
+        spec=ctx.state['specification']; ai=await self.llm('Return JSON with keys technology_stack,components,database,api,authentication,security,dependencies,mermaid. mermaid must contain system, er, api, deployment, agent_workflow diagrams as strings.',str(spec))
+        if ai:return ai
+        return {'technology_stack':{'backend':'FastAPI','frontend':'React + Vite','database':spec.get('database',{}).get('engine','SQLite'),'realtime':'WebSockets'},'components':['Frontend','FastAPI API','Agent Orchestrator','Persistent State','Sandbox Runner','Security Scanner'],'database':spec.get('database',{}),'api':{'style':'REST + WebSocket'},'authentication':spec.get('authentication',{}),'security':['sandbox generated code','dependency scanning','audit trail'],'dependencies':['fastapi','pydantic','httpx'],'mermaid':{'system':'graph TD; U[User]-->F[React]; F-->B[FastAPI]; B-->O[Orchestrator]; O-->A[Agents]; O-->S[Sandbox]; O-->D[(State)]','er':'erDiagram\nPROJECT ||--o{ AUDIT : has','api':'sequenceDiagram\nUser->>API: requirement\nAPI->>Orchestrator: start\nOrchestrator-->>User: events','deployment':'graph TD; F[Frontend]-->B[Backend]; B-->DB[(DB)]; B-->R[Redis optional]; B-->S[Docker Sandbox]','agent_workflow':'graph LR; Analyst-->Architect-->Planner-->Coder-->Tester-->Debugger-->Security-->Docs-->Deploy'}}
